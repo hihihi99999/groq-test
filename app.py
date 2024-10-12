@@ -66,7 +66,7 @@ class ModelSelector:
 
     def select(self):
         with st.sidebar:
-            st.sidebar.title("groq chat")
+            st.sidebar.title("Hisa chat")
             return st.selectbox("", self.models)
 
 
