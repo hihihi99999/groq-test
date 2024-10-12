@@ -5,11 +5,13 @@ import streamlit as st
 from dotenv import load_dotenv
 from groq import Groq
 
-load_dotenv(Path(__file__).parent / ".env")
+# ".env" ではなく "env.txt" を読み込むように変更
+load_dotenv(Path(__file__).parent / "env.txt")
 
 
 class GroqAPI:
     def __init__(self, model_name: str):
+        # env.txtからAPIキーを読み込む
         self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.model_name = model_name
 
@@ -69,7 +71,7 @@ class ModelSelector:
 
 
 def main():
-    user_input = st.chat_input("何か入力してください")
+    user_input = st.chat_input("都内のおすすめのお店を紹介します。指示してください")
     model = ModelSelector()
     selected_model = model.select()
 
